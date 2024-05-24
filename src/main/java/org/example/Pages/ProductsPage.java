@@ -23,12 +23,35 @@ public class ProductsPage extends AbstractComponent
     @FindBy(css = ".mb-3")
     List<WebElement> products;
 
+    @FindBy(css = ".ng-animating")
+     WebElement loaderElement;
+
+
     By productElement = By.cssSelector(".mb-3");
+    By addToCartButton = By.cssSelector(".card-body button:last-of-type");
+    By bannerElement = By.cssSelector("#toast-container");
 
     public List<WebElement> getProductsList()
     {
         waitForElementToAppear(productElement);
 
         return products;
+    }
+
+    public WebElement getProductByName(String productName)
+    {
+        WebElement singleProduct =   getProductsList().stream().filter(product->product.findElement(By.cssSelector("b")).getText().equals(productName)).findFirst().orElse(null);
+        return singleProduct;
+
+
+    }
+
+    public void addProductToCart(String productName)
+    {
+        WebElement singleProduct = getProductByName(productName);
+        singleProduct.findElement(addToCartButton).click();
+        waitForElementToAppear(bannerElement);
+        waitForElementToDisAppear(loaderElement);
+
     }
 }
