@@ -19,8 +19,7 @@ public class StandAloneTest
 
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws InterruptedException {
 
         String productName = "ADIDAS ORIGINAL";
 

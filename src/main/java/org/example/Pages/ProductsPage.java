@@ -46,8 +46,7 @@ public class ProductsPage extends AbstractComponent
 
     }
 
-    public void addProductToCart(String productName)
-    {
+    public void addProductToCart(String productName) throws InterruptedException {
         WebElement singleProduct = getProductByName(productName);
         singleProduct.findElement(addToCartButton).click();
         waitForElementToAppear(bannerElement);

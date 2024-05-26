@@ -29,11 +29,13 @@ public class LandingPage extends AbstractComponent
     WebElement loginBtn;
 
 
-    public void loginToApp(String loginEmail, String loginPassword)
+    public ProductsPage loginToApp(String loginEmail, String loginPassword)
     {
         userEmail.sendKeys(loginEmail);
         userPassword.sendKeys(loginPassword);
         loginBtn.click();
+        ProductsPage productsPage = new ProductsPage(driver);
+        return productsPage;
     }
 
     public void goTo()
