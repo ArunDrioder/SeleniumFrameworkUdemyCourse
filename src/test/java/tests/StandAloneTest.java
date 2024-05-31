@@ -1,3 +1,5 @@
+package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.example.Pages.LandingPage;
 import org.example.Pages.ProductsPage;
@@ -12,7 +14,6 @@ import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class StandAloneTest
 {
