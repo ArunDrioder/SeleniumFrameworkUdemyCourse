@@ -19,7 +19,7 @@ public class SubmitOrderTest extends BaseTest
 {
 
     //String productName = ;
-    @Test (dataProvider = "getData",groups = {"Purchase"})
+    @Test (dataProvider = "getData")
     public void submitOrder(HashMap<String, String> input) throws IOException, InterruptedException {
 
 
@@ -48,13 +48,7 @@ public class SubmitOrderTest extends BaseTest
         Assert.assertTrue(ordersPage.verifyOrderDisplayed(productName));
     }
 
-    public String getScreenshot(String testCaseName) throws IOException {
-        TakesScreenshot ts = (TakesScreenshot) driver;
-        File file = ts.getScreenshotAs(OutputType.FILE);
-        File src = new File(System.getProperty("user.dir") +"//reports//" +testCaseName+".png");
-        FileUtils.copyFile(file, src);
-        return System.getProperty("user.dir") +"//reports//" +testCaseName+".png";
-    }
+
 
     @DataProvider
     public Object [][] getData() throws IOException {

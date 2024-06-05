@@ -19,7 +19,7 @@ public class ErrorValidations extends BaseTest
     public void loginValidation() throws IOException, InterruptedException
     {
         landingPage.loginToApp("Shiju@gmail.com","Saibaba@!234");
-        String expectedMessage = "Incorrect email or password.";
+        String expectedMessage = "Incorrect email  password.";
         String actualMessage = landingPage.getErrorMessage();
         System.out.println(actualMessage);
         Assert.assertEquals(actualMessage,expectedMessage);
