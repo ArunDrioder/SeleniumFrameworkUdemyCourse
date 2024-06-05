@@ -19,7 +19,7 @@ public class SubmitOrderTest extends BaseTest
 {
 
     //String productName = ;
-    @Test (dataProvider = "getData")
+    @Test (dataProvider = "getData",groups = "Purchase")
     public void submitOrder(HashMap<String, String> input) throws IOException, InterruptedException {
 
 

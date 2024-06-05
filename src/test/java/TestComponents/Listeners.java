@@ -16,23 +16,27 @@ public class Listeners extends BaseTest implements ITestListener {
     ExtentTest test;
 
     ExtentReports extent = ExtentReporterNG.getReportObject();
+    ThreadLocal<ExtentTest> local = new ThreadLocal<>();
+
     @Override
     public void onTestStart(ITestResult result) {
        test =  extent.createTest(result.getMethod().getMethodName());
+       local.set(test);
+
     }
 
     @Override
     public void onTestSuccess(ITestResult result)
     {
-        test.log(Status.PASS,"PASSED");
+        local.get().log(Status.PASS,"PASSED");
 
     }
 
     @Override
-    public void onTestFailure(ITestResult result)
-    {
-        test.fail(result.getThrowable());
-
+    public void onTestFailure(ITestResult result) {
+        local.get().fail(result.getThrowable());
+        test.log(Status.FAIL,"FAILED");
+//
         try {
             driver = (WebDriver) result.getTestClass().getRealClass().getField("driver")
                     .get(result.getInstance());
@@ -47,15 +51,16 @@ public class Listeners extends BaseTest implements ITestListener {
             throw new RuntimeException(e);
         }
 
-        test.log(Status.FAIL,"FAILED");
+        local.get().log(Status.FAIL,"FAILED");
 
-        test.addScreenCaptureFromPath(filepath,result.getMethod().getMethodName());
+        local.get().addScreenCaptureFromPath(filepath,result.getMethod().getMethodName());
     }
+
 
     @Override
     public void onTestSkipped(ITestResult result)
     {
-        test.log(Status.SKIP,"SKIPPED");
+        local.get().log(Status.SKIP,"SKIPPED");
 
     }
 
