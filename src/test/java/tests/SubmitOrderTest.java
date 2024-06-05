@@ -1,19 +1,17 @@
 package tests;
 
 import TestComponents.BaseTest;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import lombok.Data;
+import org.apache.commons.io.FileUtils;
 import org.example.Pages.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -22,16 +20,16 @@ public class SubmitOrderTest extends BaseTest
 
     //String productName = ;
     @Test (dataProvider = "getData",groups = {"Purchase"})
-    public void submitOrder(String email, String password, String productName) throws IOException, InterruptedException {
+    public void submitOrder(HashMap<String, String> input) throws IOException, InterruptedException {
 
 
 
-        ProductsPage productsPage = landingPage.loginToApp(email,password);
+        ProductsPage productsPage = landingPage.loginToApp(input.get("email"),input.get("password"));
 
-        productsPage.addProductToCart(productName);
+        productsPage.addProductToCart(input.get("product"));
         CartPage cartPage =  productsPage.goToCart();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        Boolean match = cartPage.verifyProductName(productName);
+        Boolean match = cartPage.verifyProductName(input.get("product"));
         Assert.assertTrue(match);
         CheckoutPage checkoutPage = cartPage.checkOut();
         checkoutPage.selectCountry("india");
@@ -50,10 +48,19 @@ public class SubmitOrderTest extends BaseTest
         Assert.assertTrue(ordersPage.verifyOrderDisplayed(productName));
     }
 
+    public String getScreenshot(String testCaseName) throws IOException {
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File file = ts.getScreenshotAs(OutputType.FILE);
+        File src = new File(System.getProperty("user.dir") +"//reports//" +testCaseName+".png");
+        FileUtils.copyFile(file, src);
+        return System.getProperty("user.dir") +"//reports//" +testCaseName+".png";
+    }
+
     @DataProvider
-    public Object [][] getData()
-    {
-            return new Object[][]  {{"arunprasadh.s@gmail.com","Arun@!234","ADIDAS ORIGINAL"},{"shinku@gmail.com","aarun","IPHONE 13 PRO"}};
+    public Object [][] getData() throws IOException {
+
+       List<HashMap<String, String>> data = getJsonDataToMap(System.getProperty("user.dir") + "//src//test//java//data//PurchaseOrder.json");
+            return new Object[][]  {{data.get(0)},{data.get(1)}};
     }
 
 
