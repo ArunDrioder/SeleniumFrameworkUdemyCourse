@@ -8,6 +8,26 @@
     <artifactId>SeleniumFrameworkUdemyCourse</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+<!--   <build>-->
+<!--       <pluginManagement>-->
+<!--           <plugins>-->
+
+<!--               <plugin>-->
+<!--                   <groupId>org.apache.maven.plugins</groupId>-->
+<!--                   <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                   <version>3.2.5</version>-->
+<!--                   <configuration>-->
+<!--                       <suiteXmlFiles>-->
+<!--                           <suiteXmlFile>testSuites/testng.xml</suiteXmlFile>-->
+<!--                       </suiteXmlFiles>-->
+<!--                   </configuration>-->
+<!--               </plugin>-->
+
+<!--           </plugins>-->
+<!--       </pluginManagement>-->
+<!--   </build>-->
+
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -61,12 +81,75 @@
             <version>5.2.5</version>
         </dependency>
 
-
-
-
-
-
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>Regression </id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>3.2.5</version>
+                            <configuration>
+                                <suiteXmlFiles>
+                                    <suiteXmlFile>testSuites/testng.xml</suiteXmlFile>
+                                </suiteXmlFiles>
+                            </configuration>
+                        </plugin>
+
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
+        <profile>
+            <id>Purchase </id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>3.2.5</version>
+                            <configuration>
+                                <suiteXmlFiles>
+                                    <suiteXmlFile>testSuites/Purchase.xml</suiteXmlFile>
+                                </suiteXmlFiles>
+                            </configuration>
+                        </plugin>
+
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
+        <profile>
+            <id>ErrorValidation </id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>3.2.5</version>
+                            <configuration>
+                                <suiteXmlFiles>
+                                    <suiteXmlFile>testSuites/Errorvalidations.xml</suiteXmlFile>
+                                </suiteXmlFiles>
+                            </configuration>
+                        </plugin>
+
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

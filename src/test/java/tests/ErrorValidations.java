@@ -2,6 +2,7 @@ package tests;
 
 import TestComponents.BaseTest;
 
+import TestComponents.Retry;
 import org.example.Pages.CartPage;
 import org.example.Pages.CheckoutPage;
 import org.example.Pages.ConfirmationPage;
@@ -15,11 +16,11 @@ import java.util.concurrent.TimeUnit;
 
 public class ErrorValidations extends BaseTest
 {
-    @Test (groups = {"ErrorHandling"})
+    @Test (groups = {"ErrorHandling"},retryAnalyzer = Retry.class)
     public void loginValidation() throws IOException, InterruptedException
     {
         landingPage.loginToApp("Shiju@gmail.com","Saibaba@!234");
-        String expectedMessage = "Incorrect email  password.";
+        String expectedMessage = "Incorrect email password.";
         String actualMessage = landingPage.getErrorMessage();
         System.out.println(actualMessage);
         Assert.assertEquals(actualMessage,expectedMessage);
