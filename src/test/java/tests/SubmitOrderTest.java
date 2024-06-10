@@ -38,14 +38,14 @@ public class SubmitOrderTest extends BaseTest
         System.out.println(confirmationMsg);
     }
 
-    @Test(dependsOnMethods = {"submitOrder"},dataProvider = "getData")
+    @Test(dependsOnMethods = "submitOrder",dataProvider = "getData")
 
-    public void orderHistory(String email,String password, String productName)
+    public void orderHistory(HashMap<String, String> input)
     {
-        ProductsPage productsPage = landingPage.loginToApp(email,password);
+        ProductsPage productsPage = landingPage.loginToApp(input.get("email"),input.get("password"));
         driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
         OrdersPage ordersPage = productsPage.gotoOrders();
-        Assert.assertTrue(ordersPage.verifyOrderDisplayed(productName));
+        Assert.assertTrue(ordersPage.verifyOrderDisplayed(input.get("product")));
     }
 
 
