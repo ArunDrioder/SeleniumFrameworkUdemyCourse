@@ -46,8 +46,6 @@ public class CheckoutPage extends AbstractComponent
     {
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-
         submit.click();
         return new ConfirmationPage(driver);
     }
