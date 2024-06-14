@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.example.Pages.CheckoutPage;
 import org.example.Pages.LandingPage;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
@@ -30,6 +31,7 @@ public class BaseTest
 
     public  WebDriver driver;
     public LandingPage landingPage;
+    //public CheckoutPage outPage;
 
     public WebDriver initializeDriver() throws IOException {
         Properties prop = new Properties();

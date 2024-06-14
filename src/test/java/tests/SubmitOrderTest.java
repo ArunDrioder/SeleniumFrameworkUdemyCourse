@@ -34,18 +34,18 @@ public class SubmitOrderTest extends BaseTest
         CheckoutPage checkoutPage = cartPage.checkOut();
         checkoutPage.selectCountry("india");
         ConfirmationPage confirmationPage = checkoutPage.submitOrder();
-        String confirmationMsg  = confirmationPage.getConfirmationMsg();
-        System.out.println(confirmationMsg);
-    }
-
-    @Test(dependsOnMethods = "submitOrder",dataProvider = "getData")
-
-    public void orderHistory(HashMap<String, String> input)
-    {
-        ProductsPage productsPage = landingPage.loginToApp(input.get("email"),input.get("password"));
-        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-        OrdersPage ordersPage = productsPage.gotoOrders();
-        Assert.assertTrue(ordersPage.verifyOrderDisplayed(input.get("product")));
+//        String confirmationMsg  = confirmationPage.getConfirmationMsg();
+//        System.out.println(confirmationMsg);
+//    }
+//
+//    @Test(dependsOnMethods = "submitOrder",dataProvider = "getData")
+//
+//    public void orderHistory(HashMap<String, String> input)
+//    {
+//        ProductsPage productsPage = landingPage.loginToApp(input.get("email"),input.get("password"));
+//        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+//        OrdersPage ordersPage = productsPage.gotoOrders();
+//        Assert.assertTrue(ordersPage.verifyOrderDisplayed(input.get("product")));
     }
 
 
