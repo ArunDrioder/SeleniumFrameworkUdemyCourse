@@ -1,79 +1,51 @@
 package tests;
 
 import TestComponents.BaseTest;
-import org.apache.commons.io.FileUtils;
 import org.example.Pages.*;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-public class SubmitOrderTest extends BaseTest
-{
-
-    //String productName = ;
-    @Test (dataProvider = "getData",groups = "Purchase")
+public class SubmitOrderTest extends BaseTest {
+    @Test(dataProvider = "getData", groups = "Purchase")
     public void submitOrder(HashMap<String, String> input) throws IOException, InterruptedException {
 
 
-
-        ProductsPage productsPage = landingPage.loginToApp(input.get("email"),input.get("password"));
+        ProductsPage productsPage = landingPage.loginToApp(input.get("email"), input.get("password"));
 
         productsPage.addProductToCart(input.get("product"));
-        CartPage cartPage =  productsPage.goToCart();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        CartPage cartPage = productsPage.goToCart();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         Boolean match = cartPage.verifyProductName(input.get("product"));
         Assert.assertTrue(match);
         CheckoutPage checkoutPage = cartPage.checkOut();
         checkoutPage.selectCountry("india");
         ConfirmationPage confirmationPage = checkoutPage.submitOrder();
-//        String confirmationMsg  = confirmationPage.getConfirmationMsg();
-//        System.out.println(confirmationMsg);
-//    }
-//
-//    @Test(dependsOnMethods = "submitOrder",dataProvider = "getData")
-//
-//    public void orderHistory(HashMap<String, String> input)
-//    {
-//        ProductsPage productsPage = landingPage.loginToApp(input.get("email"),input.get("password"));
-//        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-//        OrdersPage ordersPage = productsPage.gotoOrders();
-//        Assert.assertTrue(ordersPage.verifyOrderDisplayed(input.get("product")));
+        String confirmationMsg = confirmationPage.getConfirmationMsg();
+        System.out.println(confirmationMsg);
     }
 
+    @Test(dependsOnMethods = "submitOrder", dataProvider = "getData", groups = "Purchase")
+
+    public void orderHistory(HashMap<String, String> input) {
+        ProductsPage productsPage = landingPage.loginToApp(input.get("email"), input.get("password"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        OrdersPage ordersPage = productsPage.gotoOrders();
+        Assert.assertTrue(ordersPage.verifyOrderDisplayed(input.get("product")));
+    }
 
 
     @DataProvider
-    public Object [][] getData() throws IOException {
+    public Object[][] getData() throws IOException {
 
-       List<HashMap<String, String>> data = getJsonDataToMap(System.getProperty("user.dir") + "//src//test//java//data//PurchaseOrder.json");
-            return new Object[][]  {{data.get(0)},{data.get(1)}};
+        List<HashMap<String, String>> data = getJsonDataToMap(System.getProperty("user.dir") + "//src//test//java//data//PurchaseOrder.json");
+        return new Object[][]{{data.get(0)}, {data.get(1)}, {data.get(2)}, {data.get(3)}, {data.get(4)}};
+
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

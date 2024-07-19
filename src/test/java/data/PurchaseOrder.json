@@ -1,16 +1,49 @@
 [
   {"email" : "arunprasadh.s@gmail.com",
     "password":"Arun@!234",
-    "product" : "ADIDAS ORIGINAL"
+    "product" : "ADIDAS ORIGINAL",
+    "actualProductName" : "Apple"
   },
   {"email" : "arunhandsomebybirth@gmail.com",
     "password":"Arun@!234",
-    "product" : "IPHONE 13 PRO"
+    "product" : "IPHONE 13 PRO",
+    "actualProductName" : "Orange"
+  },
+  {"email" : "aruntestme@gmail.com",
+    "password":"Arun@!234",
+    "product" : "ZARA COAT 3",
+    "actualProductName" : "Banana"
+  },
+  {"email" : "aruntestingtask@gmail.com",
+    "password":"Arun@!234",
+    "product" : "IPHONE 13 PRO",
+    "actualProductName" : "Strawberry"
+  },
+  {"email" : "arunfromkarur@gmail.com",
+    "password":"Arun@!234",
+    "product" : "ADIDAS ORIGINAL",
+    "actualProductName" : "Grapes"
+  },
+
+
+  {"email" : "arunprasadh.s@gmail.com",
+    "password":"ababbbabhff",
+    "expectedMessage" : "Incorrect email or password."
+  },
+  {"email" : "arunhandsomeh@gmail.com",
+    "password":"fgfgf@!234",
+    "expectedMessage" : "Incorrect email or password."
+  },
+  {"email" : "aruntestmeout@gmail.com",
+    "password":"fdgh@!234",
+    "expectedMessage" : "Incorrect email or password."
+  },
+  {"email" : "",
+    "password":"",
+    "expectedMessage" : "Incorrect email or password."
+  },
+  {"email" : "sgdsjgsj687346386",
+    "password":"dfghj@!234",
+    "expectedMessage" : "Incorrect email or password."
   }
-
-
-
-
-
-
 ]

@@ -31,7 +31,7 @@ public class BaseTest
 
     public  WebDriver driver;
     public LandingPage landingPage;
-    //public CheckoutPage outPage;
+
 
     public WebDriver initializeDriver() throws IOException {
         Properties prop = new Properties();
@@ -50,6 +50,7 @@ public class BaseTest
            driver = new ChromeDriver(options);
            driver.manage().window().setSize(new Dimension(1920,1080));
            driver.manage().window().fullscreen();
+
 
         } else if (browserName.equalsIgnoreCase("firefox"))
         {

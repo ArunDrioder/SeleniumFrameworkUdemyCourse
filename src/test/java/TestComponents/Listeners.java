@@ -14,7 +14,6 @@ import java.io.IOException;
 public class Listeners extends BaseTest implements ITestListener {
 
     ExtentTest test;
-
     ExtentReports extent = ExtentReporterNG.getReportObject();
     ThreadLocal<ExtentTest> local = new ThreadLocal<>();
 
@@ -33,7 +32,8 @@ public class Listeners extends BaseTest implements ITestListener {
     }
 
     @Override
-    public void onTestFailure(ITestResult result) {
+    public void onTestFailure(ITestResult result)
+    {
         local.get().fail(result.getThrowable());
         test.log(Status.FAIL,"FAILED");
 //

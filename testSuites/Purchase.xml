@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" parallel="tests">
-    
+
     <groups>
         
         <run>
@@ -9,16 +9,21 @@
             <include name="Purchase"/>
         </run>
     </groups>
+
+    <listeners>
+        <listener class-name="TestComponents.Listeners"/>
+    </listeners>
    <test name="Submit Order">
        <classes>
            <class name="tests.SubmitOrderTest"/>
+
        </classes>
    </test>
 
-    <test name="Error Validations Test">
+<!--    <test name="Error Validations Test">-->
 
-        <classes>
-            <class name="tests.ErrorValidations"/>
-        </classes>
-    </test>
+<!--        <classes>-->
+<!--            <class name="tests.ErrorValidations"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

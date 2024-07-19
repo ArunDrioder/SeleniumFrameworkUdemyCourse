@@ -31,6 +31,12 @@ public class LandingPage extends AbstractComponent
     @FindBy(css ="[class*='flyInOut']")
     WebElement errorMessage;
 
+    @FindBy(xpath = "//div[contains(text(),'*Email is required')]")
+    WebElement emailValidationMessage;
+
+    @FindBy (xpath = "//div[contains(text(),'*Password is required')]")
+    WebElement passwordValidationMessage;
+
 
     public ProductsPage loginToApp(String loginEmail, String loginPassword)
     {
@@ -45,8 +51,11 @@ public class LandingPage extends AbstractComponent
         Thread.sleep(1000);
 
         waitFoWebElementToAppear(errorMessage);
+
         return errorMessage.getText();
     }
+
+
 
     public void goTo()
     {

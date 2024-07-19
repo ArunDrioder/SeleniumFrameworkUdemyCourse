@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class CheckoutPage extends AbstractComponent
@@ -45,7 +46,7 @@ public class CheckoutPage extends AbstractComponent
     public ConfirmationPage submitOrder()
     {
 
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         submit.click();
         return new ConfirmationPage(driver);
     }
