@@ -40,10 +40,10 @@
   },
   {"email" : "",
     "password":"",
-    "expectedMessage" : "Incorrect email or password."
+    "expectedMessage" : "*Email is required *Password is required"
   },
-  {"email" : "sgdsjgsj687346386",
+  {"email" : "sgdsjgsj@687346386",
     "password":"dfghj@!234",
-    "expectedMessage" : "Incorrect email or password."
+    "expectedMessage" : "Enter Valid Email"
   }
 ]

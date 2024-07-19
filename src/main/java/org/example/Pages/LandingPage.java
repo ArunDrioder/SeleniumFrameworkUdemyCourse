@@ -55,7 +55,17 @@ public class LandingPage extends AbstractComponent
         return errorMessage.getText();
     }
 
-
+    public String getFrontendValidationMessage(String fieldType) throws InterruptedException {
+        Thread.sleep(500); // Adjust sleep if necessary
+        if (fieldType.equals("email")) {
+            waitFoWebElementToAppear(emailValidationMessage);
+            return emailValidationMessage.getText();
+        } else if (fieldType.equals("password")) {
+            waitFoWebElementToAppear(passwordValidationMessage);
+            return passwordValidationMessage.getText();
+        }
+        return "";
+    }
 
     public void goTo()
     {
