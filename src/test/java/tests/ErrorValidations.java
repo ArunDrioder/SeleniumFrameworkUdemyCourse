@@ -47,17 +47,17 @@ public class ErrorValidations extends BaseTest
 
     }
 
-//    @Test (groups = {"ErrorHandling"},retryAnalyzer = Retry.class,dataProvider = "getProductData")
-//    public void productValidation(HashMap<String, String> input) throws InterruptedException {
-//        String productName = input.get("product");
-//        ProductsPage productsPage = landingPage.loginToApp(input.get("email"), input.get("password"));
-//        productsPage.addProductToCart(productName);
-//        CartPage cartPage =  productsPage.goToCart();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-//        Boolean match = cartPage.verifyProductName(input.get("actualProductName"));
-//        Assert.assertTrue(match);
+    @Test (groups = {"ErrorHandling"},retryAnalyzer = Retry.class,dataProvider = "getProductData")
+    public void productValidation(HashMap<String, String> input) throws InterruptedException {
+        String productName = input.get("product");
+        ProductsPage productsPage = landingPage.loginToApp(input.get("email"), input.get("password"));
+        productsPage.addProductToCart(productName);
+        CartPage cartPage =  productsPage.goToCart();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        Boolean match = cartPage.verifyProductName(input.get("actualProductName"));
+        Assert.assertTrue(match);
 //
-//    }
+    }
 
     @DataProvider
     public Object[][] getLoginData() throws IOException {

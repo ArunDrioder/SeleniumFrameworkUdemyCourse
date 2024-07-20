@@ -44,6 +44,6 @@
   },
   {"email" : "sgdsjgsj@687346386",
     "password":"dfghj@!234",
-    "expectedMessage" : "Enter Valid Email"
+    "expectedMessage" : "Incorrect email or password."
   }
 ]
