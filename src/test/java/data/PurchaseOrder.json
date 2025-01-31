@@ -1,7 +1,7 @@
 [
   {"email" : "arunprasadh.s@gmail.com",
     "password":"Arun@!234",
-    "product" : "ADIDAS ORIGINAL",
+    "product" : "QWERTY",
     "actualProductName" : "Apple"
   },
   {"email" : "arunhandsomebybirth@gmail.com",
@@ -11,17 +11,13 @@
   },
   {"email" : "aruntestme@gmail.com",
     "password":"Arun@!234",
-    "product" : "ZARA COAT 3",
+    "product" : "BANARSI SAREE",
     "actualProductName" : "Banana"
   },
-  {"email" : "aruntestingtask@gmail.com",
-    "password":"Arun@!234",
-    "product" : "IPHONE 13 PRO",
-    "actualProductName" : "Strawberry"
-  },
+
   {"email" : "arunfromkarur@gmail.com",
     "password":"Arun@!234",
-    "product" : "ADIDAS ORIGINAL",
+    "product" : "QWERTY",
     "actualProductName" : "Grapes"
   },
 
