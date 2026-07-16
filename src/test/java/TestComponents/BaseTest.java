@@ -39,25 +39,35 @@ public class BaseTest
         prop.load(fis);
         String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") : prop.getProperty("browser");
          //prop.getProperty("browser");
-        if (browserName.contains("chrome"))
-        {
+        if (browserName.contains("chrome")) {
             ChromeOptions options = new ChromeOptions();
             WebDriverManager.chromedriver().setup();
-           if (browserName.contains("headless"))
-           {
-               options.addArguments("headless");
-           }
-           driver = new ChromeDriver(options);
-           driver.manage().window().setSize(new Dimension(1920,1080));
-           driver.manage().window().fullscreen();
 
+            if (browserName.contains("headless")) {
+                options.addArguments("headless");
+                // Force the window size directly via options for headless mode
+                //options.addArguments("window-size=1920,1080");
 
+            }
+            driver = new ChromeDriver(options);
+            //driver.manage().window().setSize(new Dimension(1920, 1080));
+
+            // ... rest of your code
         } else if (browserName.equalsIgnoreCase("firefox"))
         {
             FirefoxOptions options = new FirefoxOptions();
-            options.addArguments("headless");
             WebDriverManager.firefoxdriver().setup();
-             driver = new FirefoxDriver();
+
+            if (browserName.contains("headless")) {
+                options.addArguments("headless");
+                // Force the window size directly via options for headless mode
+                //options.addArguments("window-size=1920,1080");
+
+            }
+            driver = new FirefoxDriver(options);
+            //driver.manage().window().setSize(new Dimension(1920, 1080));
+
+            // ... rest of your code
 
 
         } else if (browserName.equalsIgnoreCase("edge"))
