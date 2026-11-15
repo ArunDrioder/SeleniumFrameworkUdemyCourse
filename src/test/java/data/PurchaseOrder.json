@@ -38,7 +38,7 @@
   },
 
   {"email" : "arunhandsomeh@gmail.com",
-    "password":"fgfgf@!234",
+    "password":"fgfgf@!244",
     "expectedMessage" : "Incorrect email or password."
   },
 
